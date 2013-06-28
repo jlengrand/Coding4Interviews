@@ -11,10 +11,13 @@ import unittest
 class test_bin_search(unittest.TestCase):
 
     def setUp(self):
-        arr1 = [1, 2, 3, 4, 5]
+        self.arr1 = [1, 2, 3, 4, 5]
+        self.s1 = 3
+        self.res1 = None
 
     def test_shuffle(self):
-        self.assertTrue(1, 1)
+        res = bin_search(self.arr1, self.s1)
+        self.assertEqual(res, self.res1)
 
 if __name__ == '__main__':
     unittest.main()

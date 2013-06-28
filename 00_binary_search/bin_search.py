@@ -17,5 +17,8 @@ def bin_search(arr, t):
     """
     Performs binary search on the input array.
     Searches for t in arr, using a binary search.
-    Returns t index in arr if it is found, null otherwise
+    Returns t index in arr if it is found, None otherwise
     """
+    return None
+
+
