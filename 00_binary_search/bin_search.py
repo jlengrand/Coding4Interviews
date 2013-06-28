@@ -13,6 +13,7 @@ range in which it must lie is known to be empty.  In an N-element table,
 the search uses roughly log(2) N comparisons.
 """
 
+
 def bin_search(arr, t):
     """
     Performs binary search on the input array.
@@ -24,16 +25,30 @@ def bin_search(arr, t):
     except TypeError:
         return False
 
-    if arr is None or length < 1 :
+    if arr is None or length < 1:
         return False
 
     if length == 1:
         return True if (arr[0] == t) else False
+    else:  # length > 1
+        val = length / 2.0 % 2
+        if val == 0:
+            idx = length / 2 + 1
+        else:
+            idx = length / 2
 
+        print "--"
+        print idx
+        print arr
+        print arr[idx] == t
+        if arr[idx] < t:
+            print "in"
+            return bin_search(arr[idx + 1:], t)  # last half
+        elif arr[idx] > t:
+            print "in2"
 
-
-
-
-    return False
-
+            return bin_search(arr[0:idx], t)  # first half
+        else:  # a[idx] == t
+            print "in3"
+            return True
 
