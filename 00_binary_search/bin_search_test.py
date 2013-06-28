@@ -28,36 +28,64 @@ class test_bin_search(unittest.TestCase):
 
 
         self.arr6 = [1, 3, 9, 14, 22]
-        self.s6 = 22
-        self.res6 = True
+        self.s61 = 22
+        self.s62 = 3
+        self.s63 = 16
+        self.res61 = True
+        self.res62 = True
+        self.res63 = False
+
+        self.arr7 = [1, 3, 9, 14, 22, 25]
+        self.s71 = 22
+        self.res71 = True
+        self.s72 = 3
+        self.res72 = True
+        self.s73 = 58
+        self.res73 = False
 
     def test_bin_search(self):
-        # # Test None input
-        # res = bin_search(self.arr2, self.s1)
-        # self.assertEqual(res, self.res2)
+        # Test None input
+        res = bin_search(self.arr2, self.s1)
+        self.assertEqual(res, self.res2)
 
-        # # Test empty table
-        # res = bin_search(self.arr3, self.s1)
-        # self.assertEqual(res, self.res2)
+        # Test empty table
+        res = bin_search(self.arr3, self.s1)
+        self.assertEqual(res, self.res2)
 
-        # # Test strange input
-        # res = bin_search(self.arr4, self.s1)
-        # self.assertEqual(res, self.res2)
+        # Test strange input
+        res = bin_search(self.arr4, self.s1)
+        self.assertEqual(res, self.res2)
 
-        # # Testing length1 array
-        # res = bin_search(self.arr5, self.s51)
-        # self.assertEqual(res, self.res51)
+        # Testing length1 array
+        res = bin_search(self.arr5, self.s51)
+        self.assertEqual(res, self.res51)
 
-        # res = bin_search(self.arr5, self.s52)
-        # self.assertEqual(res, self.res52)
+        res = bin_search(self.arr5, self.s52)
+        self.assertEqual(res, self.res52)
 
-        # # longer array easy
-        # res = bin_search(self.arr1, self.s1)
-        # self.assertEqual(res, self.res1)
+        # longer array easy
+        res = bin_search(self.arr1, self.s1)
+        self.assertEqual(res, self.res1)
 
-        # longer array has to search
-        res = bin_search(self.arr6, self.s6)
-        self.assertEqual(res, self.res6)
+        # longer array has to search / odd
+        res = bin_search(self.arr6, self.s61)
+        self.assertEqual(res, self.res61)
+
+        res = bin_search(self.arr6, self.s62)
+        self.assertEqual(res, self.res62)
+
+        res = bin_search(self.arr6, self.s63)
+        self.assertEqual(res, self.res63)
+
+        # longer array has to search / even
+        res = bin_search(self.arr7, self.s71)
+        self.assertEqual(res, self.res71)
+
+        res = bin_search(self.arr7, self.s72)
+        self.assertEqual(res, self.res72)
+
+        res = bin_search(self.arr7, self.s73)
+        self.assertEqual(res, self.res73)
 
 if __name__ == '__main__':
     unittest.main()

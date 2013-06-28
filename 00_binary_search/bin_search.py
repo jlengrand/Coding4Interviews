@@ -37,18 +37,10 @@ def bin_search(arr, t):
         else:
             idx = length / 2
 
-        print "--"
-        print idx
-        print arr
-        print arr[idx] == t
         if arr[idx] < t:
-            print "in"
             return bin_search(arr[idx + 1:], t)  # last half
         elif arr[idx] > t:
-            print "in2"
-
             return bin_search(arr[0:idx], t)  # first half
         else:  # a[idx] == t
-            print "in3"
             return True
 
