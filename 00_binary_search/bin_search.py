@@ -19,6 +19,15 @@ def bin_search(arr, t):
     Searches for t in arr, using a binary search.
     Returns t index in arr if it is found, None otherwise
     """
+    try:
+        length = len(arr)
+    except TypeError:
+        return None
+
+    if arr is None or length < 1 :
+        return None
+
+
     return None
 
 
