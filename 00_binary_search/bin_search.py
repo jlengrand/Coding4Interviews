@@ -17,17 +17,23 @@ def bin_search(arr, t):
     """
     Performs binary search on the input array.
     Searches for t in arr, using a binary search.
-    Returns t index in arr if it is found, None otherwise
+    Returns True if t is found, False otherwise.
     """
     try:
         length = len(arr)
     except TypeError:
-        return None
+        return False
 
     if arr is None or length < 1 :
-        return None
+        return False
+
+    if length == 1:
+        return True if (arr[0] == t) else False
 
 
-    return None
+
+
+
+    return False
 
 
