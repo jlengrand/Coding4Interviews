@@ -50,7 +50,6 @@ class test_binary_search_tree(unittest.TestCase):
 
         node = bst.root_node  # we have 6
         self.assertEqual(node.value, node_val1)
-        print node.left_child, node.value
         self.assertTrue(node.has_left_child())
         self.assertEqual(node.left_child.value, node_val2)
         self.assertTrue(node.has_right_child())

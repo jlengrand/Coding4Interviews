@@ -31,7 +31,7 @@ class BinarySearchTree():
                     node = node.right_child
                     is_left = False
 
-            # we achieved a leaf
+            # we reached a leaf
             node = BinarySearchNode(value, ptr_node)
             if is_left:
                 ptr_node.left_child = node
@@ -39,6 +39,7 @@ class BinarySearchTree():
                 ptr_node.right_child = node
 
         self.size += 1
+
 
 class BinarySearchNode():
     """
@@ -54,7 +55,7 @@ class BinarySearchNode():
         self.right_child = None
 
     def has_left_child(self):
-        return not(self.left_child is None)
+        return self.left_child is not None
 
     def has_right_child(self):
         return self.right_child is not None
