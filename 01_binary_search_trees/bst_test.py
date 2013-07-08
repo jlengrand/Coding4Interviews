@@ -21,11 +21,11 @@ class test_binary_search_tree(unittest.TestCase):
 
         self.assertEqual(bst.size, 1)
 
-        node_val2= 4
+        node_val2 = 4
         bst.add(node_val2)
-        node_val3= 10
+        node_val3 = 10
         bst.add(node_val3)
-        node_val4= 16
+        node_val4 = 16
         bst.add(node_val4)
         self.assertEqual(bst.size, 4)
 
@@ -40,11 +40,11 @@ class test_binary_search_tree(unittest.TestCase):
         bst = BinarySearchTree()
         node_val1 = 6
         bst.add(node_val1)
-        node_val2= 4
+        node_val2 = 4
         bst.add(node_val2)
-        node_val3= 10
+        node_val3 = 10
         bst.add(node_val3)
-        node_val4= 16
+        node_val4 = 16
         bst.add(node_val4)
         self.assertEqual(bst.size, 4)
 
@@ -55,10 +55,9 @@ class test_binary_search_tree(unittest.TestCase):
         self.assertTrue(node.has_right_child())
         self.assertEqual(node.right_child.value, node_val3)
 
-        node = node.left_child # we have 4 now
+        node = node.left_child  # we have 4 now
         self.assertFalse(node.has_left_child())
         self.assertFalse(node.has_right_child())
-
 
     def test_max(self):
 
@@ -74,15 +73,39 @@ class test_binary_search_tree(unittest.TestCase):
 
         node_val1 = 6
         bst.add(node_val1)
-        node_val2= 4
+        node_val2 = 4
         bst.add(node_val2)
-        node_val3= 10
+        node_val3 = 10
         bst.add(node_val3)
-        node_val4= 16
+        node_val4 = 16
         bst.add(node_val4)
         self.assertEqual(bst.size, 4)
 
         self.assertEqual(bst.max(), node_val4)
+
+    def test_min(self):
+
+        #    6
+        #   / \
+        #  4   10
+        #       \
+        #        16
+
+        bst = BinarySearchTree()
+
+        self.assertEqual(bst.min(), None)
+
+        node_val1 = 6
+        bst.add(node_val1)
+        node_val2 = 4
+        bst.add(node_val2)
+        node_val3 = 10
+        bst.add(node_val3)
+        node_val4 = 16
+        bst.add(node_val4)
+        self.assertEqual(bst.size, 4)
+
+        self.assertEqual(bst.min(), node_val2)
 
 if __name__ == '__main__':
     unittest.main()

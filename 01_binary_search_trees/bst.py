@@ -4,6 +4,7 @@ Binary Search Tree Implementation
 2013/07
 """
 
+
 class BinarySearchTree():
     """
     Defines a complete binary search Tree.
@@ -24,17 +25,17 @@ class BinarySearchTree():
         the node.
         """
         if self.size == 0:
-            self.root_node = BinarySearchNode(value, None) # root node has no parent
+            self.root_node = BinarySearchNode(value, None)  # root node has no parent
 
         else:
             node = self.root_node
             is_left = None
-            while(node != None):
-                ptr_node = node # keep parent in memory
+            while(node is not None):
+                ptr_node = node  # keep parent in memory
                 if node.value > value:  # we go to the left child
                     node = node.left_child
                     is_left = True
-                else: # we move to the right child. This means = case too
+                else:  # we move to the right child. This means = case too
                     node = node.right_child
                     is_left = False
 
@@ -52,16 +53,31 @@ class BinarySearchTree():
         Returns the highest node value of the tree.
         Otherwise, returns None
         """
-
         if self.size == 0:
             return None
-        else:  # we have values in the node
+        else:  # we have nodes in the tree
             node = self.root_node
             while(node.has_right_child()):
                 node = node.right_child
 
             # we have the leaf
             return node.value
+
+    def min(self):
+        """
+        Returns the lowest node value of the tree.
+        Otherwise returns None
+        """
+        if self.size == 0:
+            return None
+        else:  # we have nodes in the tree
+            node = self.root_node
+            while(node.has_left_child()):
+                node = node.left_child
+
+            # we have the leaf
+            return node.value
+
 
 class BinarySearchNode():
     """
@@ -81,4 +97,3 @@ class BinarySearchNode():
 
     def has_right_child(self):
         return self.right_child is not None
-
