@@ -16,6 +16,13 @@ class BinarySearchTree():
         self.root_node = None
 
     def add(self, value):
+        """
+        Adds the input value in the right position of the binary search Tree
+        The rule is, left children of a node have a value < than the value
+        of the node.
+        Right children of a node conversely have a value >= of the value of
+        the node.
+        """
         if self.size == 0:
             self.root_node = BinarySearchNode(value, None) # root node has no parent
 
@@ -27,7 +34,7 @@ class BinarySearchTree():
                 if node.value > value:  # we go to the left child
                     node = node.left_child
                     is_left = True
-                else: # we move to the right child
+                else: # we move to the right child. This means = case too
                     node = node.right_child
                     is_left = False
 
@@ -40,6 +47,21 @@ class BinarySearchTree():
 
         self.size += 1
 
+    def max(self):
+        """
+        Returns the highest node value of the tree.
+        Otherwise, returns None
+        """
+
+        if self.size == 0:
+            return None
+        else:  # we have values in the node
+            node = self.root_node
+            while(node.has_right_child()):
+                node = node.right_child
+
+            # we have the leaf
+            return node.value
 
 class BinarySearchNode():
     """

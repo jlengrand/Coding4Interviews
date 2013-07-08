@@ -59,5 +59,30 @@ class test_binary_search_tree(unittest.TestCase):
         self.assertFalse(node.has_left_child())
         self.assertFalse(node.has_right_child())
 
+
+    def test_max(self):
+
+        #    6
+        #   / \
+        #  4   10
+        #       \
+        #        16
+
+        bst = BinarySearchTree()
+
+        self.assertEqual(bst.max(), None)
+
+        node_val1 = 6
+        bst.add(node_val1)
+        node_val2= 4
+        bst.add(node_val2)
+        node_val3= 10
+        bst.add(node_val3)
+        node_val4= 16
+        bst.add(node_val4)
+        self.assertEqual(bst.size, 4)
+
+        self.assertEqual(bst.max(), node_val4)
+
 if __name__ == '__main__':
     unittest.main()
