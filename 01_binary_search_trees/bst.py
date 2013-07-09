@@ -78,6 +78,40 @@ class BinarySearchTree():
             # we have the leaf
             return node.value
 
+    # def __str__(self):
+    #     """
+    #     Prints a nice version of the binary search node
+    #     """
+    #     #TODO
+    #     return "aaa"
+
+    @staticmethod
+    def is_search_tree(a_tree_root):
+        """
+        Returns true of the input binary tree is a valid search binary tree.
+        """
+        #TODO
+        # no check for now, let s imagine we have a correct binary tree.
+        root_node = a_tree_root
+        print root_node.value
+        if (root_node.has_left_child()):
+            if (root_node.value < root_node.left_child.value):  # breaks rules
+                return False
+            else:
+                return BinarySearchTree.is_search_tree(root_node.left_child)
+
+        if (root_node.has_right_child()):
+            if (root_node.value < root_node.right_child.value):  # breaks rules
+                return False
+            else:
+                return BinarySearchTree.is_search_tree(root_node.right_child)
+
+    @staticmethod
+    def is_search_node(a_tree_node):
+        left = (not a_tree_node.has_left_child()) or (a_tree_node.has_left_child() and a_tree_node.left_child.value <= a_tree_node.value )
+        right = (not a_tree_node.has_right_child()) or (a_tree_node.has_right_child() and a_tree_node.right_child.value > a_tree_node.value )
+
+        return (left and right)
 
 class BinarySearchNode():
     """
