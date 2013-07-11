@@ -122,9 +122,9 @@ class test_binary_search_tree(unittest.TestCase):
         node_val4 = 16
         bst.add(node_val4)
 
-        print(bst)
+        #print(bst)
 
-    def test_is_search_tree(self):
+    def test_is_search_node(self):
         bst = BinarySearchTree()
 
         self.assertEqual(bst.min(), None)
@@ -147,25 +147,24 @@ class test_binary_search_tree(unittest.TestCase):
         self.assertTrue(BinarySearchTree.is_search_node(bst.root_node))
         self.assertTrue(BinarySearchTree.is_search_node(bst.root_node.left_child))
         self.assertTrue(BinarySearchTree.is_search_node(bst.root_node.right_child))
+        self.assertTrue(BinarySearchTree.is_search_node(None))
 
+    def test_is_search_tree(self):
+        # No assertion here, I just want a beautifully designed tree.
+        bst = BinarySearchTree()
 
-    # def test_is_search_tree(self):
-    #     # No assertion here, I just want a beautifully designed tree.
-    #     bst = BinarySearchTree()
+        self.assertEqual(bst.min(), None)
 
-    #     self.assertEqual(bst.min(), None)
+        node_val1 = 6
+        bst.add(node_val1)
+        node_val2 = 4
+        bst.add(node_val2)
+        node_val3 = 10
+        bst.add(node_val3)
+        node_val4 = 16
+        bst.add(node_val4)
 
-    #     node_val1 = 6
-    #     bst.add(node_val1)
-    #     node_val2 = 4
-    #     bst.add(node_val2)
-    #     node_val3 = 10
-    #     bst.add(node_val3)
-    #     node_val4 = 16
-    #     bst.add(node_val4)
-
-    #     print bst
-    #     print BinarySearchTree.is_search_tree(bst.root_node)
+        self.assertTrue(BinarySearchTree.is_search_tree(bst.root_node))
 
 if __name__ == '__main__':
     unittest.main()

@@ -86,7 +86,7 @@ class BinarySearchTree():
     #     return "aaa"
 
     @staticmethod
-    def is_search_tree(a_tree_root):
+    def is_search_tree_old(a_tree_root):
         """
         Returns true of the input binary tree is a valid search binary tree.
         """
@@ -107,7 +107,26 @@ class BinarySearchTree():
                 return BinarySearchTree.is_search_tree(root_node.right_child)
 
     @staticmethod
+    def is_search_tree(a_tree_root):
+        """
+        Returns true of the input binary tree is a valid search binary tree.
+        """
+        #If I don't follow the rule, no need to check further
+        if not BinarySearchTree.is_search_node(a_tree_root):
+            return False
+        else:
+            left = BinarySearchTree.is_search_tree(a_tree_root.left_child) if a_tree_root.has_left_child() else True
+            right = BinarySearchTree.is_search_tree(a_tree_root.right_child) if a_tree_root.has_right_child() else True
+
+            return left and right
+            #return (BinarySearchTree.is_search_tree(a_tree_root.left_child) and BinarySearchTree.is_search_tree(a_tree_root.right_child))
+
+    @staticmethod
     def is_search_node(a_tree_node):
+        #edge case is True
+        if a_tree_node is None:
+            return True
+
         left = (not a_tree_node.has_left_child()) or (a_tree_node.has_left_child() and a_tree_node.left_child.value <= a_tree_node.value )
         right = (not a_tree_node.has_right_child()) or (a_tree_node.has_right_child() and a_tree_node.right_child.value > a_tree_node.value )
 
