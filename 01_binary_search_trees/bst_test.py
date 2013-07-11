@@ -164,7 +164,46 @@ class test_binary_search_tree(unittest.TestCase):
         node_val4 = 16
         bst.add(node_val4)
 
+        #    6
+        #   / \
+        #  4   10
+        #       \
+        #        16
+
         self.assertTrue(BinarySearchTree.is_search_tree(bst.root_node))
+
+        #    6
+        #   / \
+        #  8   10
+        #       \
+        #        16
+        bst.root_node.left_child.value = 8
+        self.assertEqual(bst.root_node.left_child.value, 8)
+        self.assertFalse(BinarySearchTree.is_search_tree(bst.root_node))
+
+        #    12
+        #   / \
+        #  4   10
+        #       \
+        #        16
+        bst.root_node.left_child.value = 4
+        self.assertEqual(bst.root_node.left_child.value, 4)
+        bst.root_node.value = 12
+        self.assertEqual(bst.root_node.value, 12)
+        self.assertFalse(BinarySearchTree.is_search_tree(bst.root_node))
+
+        #    6
+        #   / \
+        #  4   20
+        #       \
+        #        16
+        bst.root_node.left_child.value = 6
+        self.assertEqual(bst.root_node.left_child.value, 6)
+        bst.root_node.right_child.value = 20
+        self.assertEqual(bst.root_node.right_child.value, 20)
+        self.assertFalse(BinarySearchTree.is_search_tree(bst.root_node))
+
+
 
 if __name__ == '__main__':
     unittest.main()
