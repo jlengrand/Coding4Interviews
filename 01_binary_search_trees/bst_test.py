@@ -208,5 +208,9 @@ class test_binary_search_tree(unittest.TestCase):
 
         self.assertEqual(bst.__str__(), "4 6 10")
 
+        self.assertEqual(bst.root_node.right_child.__str__(), "10 16")
+        self.assertEqual(bst.root_node.right_child.right_child.__str__(), "16")
+
+
 if __name__ == '__main__':
     unittest.main()

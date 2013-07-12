@@ -134,4 +134,13 @@ class BinarySearchNode():
         """
         prints a single tree node.
         """
-        return (str(self.left_child.value) + " " +  str(self.value) + " " + str(self.right_child.value) )
+        ret = ""
+        if self.has_left_child():
+            ret += str(self.left_child.value) + " "
+
+        ret += str(self.value)
+
+        if self.has_right_child():
+            ret += " " + str(self.right_child.value)
+
+        return ret
