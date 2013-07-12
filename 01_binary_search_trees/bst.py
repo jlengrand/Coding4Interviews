@@ -83,7 +83,7 @@ class BinarySearchTree():
         Prints a nice version of the binary search node
         """
         #TODO
-        return "aaa"
+        return self.root_node.__str__()
 
     @staticmethod
     def is_search_tree(a_tree_root):
@@ -129,3 +129,9 @@ class BinarySearchNode():
 
     def has_right_child(self):
         return self.right_child is not None
+
+    def __str__(self):
+        """
+        prints a single tree node.
+        """
+        return (str(self.left_child.value) + " " +  str(self.value) + " " + str(self.right_child.value) )

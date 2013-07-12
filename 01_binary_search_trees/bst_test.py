@@ -200,7 +200,13 @@ class test_binary_search_tree(unittest.TestCase):
         node_val4 = 16
         bst.add(node_val4)
 
-        self.assertEqual(bst.__str__(), "aaa")
+        #    6
+        #   / \
+        #  4   10
+        #       \
+        #        16
+
+        self.assertEqual(bst.__str__(), "4 6 10")
 
 if __name__ == '__main__':
     unittest.main()
