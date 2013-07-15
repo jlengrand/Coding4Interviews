@@ -186,7 +186,7 @@ class test_binary_search_tree(unittest.TestCase):
         self.assertEqual(bst.root_node.right_child.value, 20)
         self.assertFalse(BinarySearchTree.is_search_tree(bst.root_node))
 
-    def test_print(self):
+    def test_print_node(self):
         bst = BinarySearchTree()
 
         self.assertEqual(bst.min(), None)
@@ -206,11 +206,33 @@ class test_binary_search_tree(unittest.TestCase):
         #       \
         #        16
 
-        self.assertEqual(bst.__str__(), "4 6 10")
+        #self.assertEqual(bst.__str__(), "4 6 10")
 
+        self.assertEqual(bst.root_node.__str__(), "4 6 10")
         self.assertEqual(bst.root_node.right_child.__str__(), "10 16")
         self.assertEqual(bst.root_node.right_child.right_child.__str__(), "16")
 
+    def test_print_tree(self):
+        bst = BinarySearchTree()
+
+        self.assertEqual(bst.min(), None)
+
+        node_val1 = 6
+        bst.add(node_val1)
+        node_val2 = 4
+        bst.add(node_val2)
+        node_val3 = 10
+        bst.add(node_val3)
+        node_val4 = 16
+        bst.add(node_val4)
+
+        #    6
+        #   / \
+        #  4   10
+        #       \
+        #        16
+
+        self.assertEqual(bst.__str__(), "4 6 10 16")
 
 if __name__ == '__main__':
     unittest.main()

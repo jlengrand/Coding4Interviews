@@ -82,8 +82,27 @@ class BinarySearchTree():
         """
         Prints a nice version of the binary search node
         """
-        #TODO
-        return self.root_node.__str__()
+        max_iter = 1000000000  # max number of nodes
+        ite = 0
+        ret = ""
+        node = self.root_node
+
+        top = False  # dictates when to climb one level
+        while(ite < max_iter):
+            while (node.has_left_child()):
+                node = node.left_child
+                top = True
+            ret += str(node.value) + " "
+            if top:  # we need to climb one level
+                node = node.parent
+                top = False
+                ret += str(node.value) + " "
+            if (not node.has_right_child()):
+                return ret.strip()  # removes superflous spaces
+            else:
+                node = node.right_child
+            ite += 1
+        return None  # problem
 
     @staticmethod
     def is_search_tree(a_tree_root):
