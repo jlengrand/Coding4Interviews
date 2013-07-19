@@ -183,7 +183,6 @@ class BinarySearchIterator():
             print "max limit reached!"
             raise StopIteration  # max number of elements
 
-        print self.pos
         if self.pos == "left":
             return self.go_left()
         elif self.pos == "top":
@@ -198,30 +197,6 @@ class BinarySearchIterator():
             raise StopIteration  # problem somewhere
 
         self.ite += 1
-
-        # max_iter = 1000000000  # max number of nodes
-        # ite = 0
-        # ret = ""
-        # node = self.root_node
-
-        # top = False  # dictates when to climb one level
-        # while(ite < max_iter):
-        #     while (node.has_left_child()):
-        #         node = node.left_child
-        #         top = True
-        #     ret += str(node.value) + " "
-        #     if top:  # we need to climb one level
-        #         node = node.parent
-        #         top = False
-        #         ret += str(node.value) + " "
-        #     if (not node.has_right_child()):
-        #         return ret.strip()  # removes superflous spaces
-        #     else:
-        #         node = node.right_child
-        #     ite += 1
-        # return None  # problem
-
-
 
 class BinarySearchNode():
     """

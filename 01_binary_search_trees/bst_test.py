@@ -258,12 +258,13 @@ class test_binary_search_tree(unittest.TestCase):
 
         ite = BinarySearchIterator(bst)
         self.assertEquals(ite.tree, bst)
-        print ite.next()
-        print ite.next()
-        print ite.next()
-        print ite.next()
 
+        self.assertEquals(ite.next(), 4)
+        self.assertEquals(ite.next(), 6)
+        self.assertEquals(ite.next(), 10)
+        self.assertEquals(ite.next(), 16)
 
+        self.assertRaises(StopIteration, ite.next)
 
 if __name__ == '__main__':
     unittest.main()
