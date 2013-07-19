@@ -130,6 +130,99 @@ class BinarySearchTree():
 
         return (left and right)
 
+
+class BinarySearchIterator():
+    """
+    Transforms a binary search tree into an iterator.
+    Will returns the values of the tree in ascending order.
+    """
+
+    def __init__(self, tree):
+        self.tree = tree
+        self.node = tree.root_node
+        self.max_ite = 1000000000  # max number of nodes
+        self.ite = 0
+        self.pos = "left"
+
+    def __iter__(self):
+        return self
+
+    def go_left(self):
+        while(self.node.has_left_child()):
+            self.node = self.node.left_child
+
+        ret_val = self.node.value
+
+        self.pos = "top"  # next state is top
+
+        return ret_val
+
+    def go_top(self):
+        self.node = self.node.parent
+        ret_val = self.node.value
+
+        self.pos = "right"
+
+        return ret_val
+
+    def go_right(self):
+        if (not self.node.has_right_child()):
+            raise StopIteration  # end condition. We reached the end of tree
+        else:
+            self.node = self.node.right_child
+            if self.node.has_left_child():
+                self.pos = "left"
+            else:
+                self.pos = "right"
+
+        ret_val = self.node.value
+        return ret_val  # we dont change node here
+
+    def next(self):
+        if self.ite > self.max_ite:
+            print "max limit reached!"
+            raise StopIteration  # max number of elements
+
+        print self.pos
+        if self.pos == "left":
+            return self.go_left()
+        elif self.pos == "top":
+            return self.go_top()
+        elif self.pos == "right":
+            try:
+                return self.go_right()
+            except StopIteration:
+                raise StopIteration
+        else:
+            print "problem!"
+            raise StopIteration  # problem somewhere
+
+        self.ite += 1
+
+        # max_iter = 1000000000  # max number of nodes
+        # ite = 0
+        # ret = ""
+        # node = self.root_node
+
+        # top = False  # dictates when to climb one level
+        # while(ite < max_iter):
+        #     while (node.has_left_child()):
+        #         node = node.left_child
+        #         top = True
+        #     ret += str(node.value) + " "
+        #     if top:  # we need to climb one level
+        #         node = node.parent
+        #         top = False
+        #         ret += str(node.value) + " "
+        #     if (not node.has_right_child()):
+        #         return ret.strip()  # removes superflous spaces
+        #     else:
+        #         node = node.right_child
+        #     ite += 1
+        # return None  # problem
+
+
+
 class BinarySearchNode():
     """
     Defines any node of the Binary Search Tree.

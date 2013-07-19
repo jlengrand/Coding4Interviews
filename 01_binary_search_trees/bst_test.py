@@ -5,6 +5,7 @@ Unit tests for the binary search tree data structure
 """
 
 from bst import BinarySearchTree
+from bst import BinarySearchIterator
 
 import unittest
 
@@ -233,6 +234,36 @@ class test_binary_search_tree(unittest.TestCase):
         #        16
 
         self.assertEqual(bst.__str__(), "4 6 10 16")
+
+    def test_iterator(self):
+
+        bst = BinarySearchTree()
+
+        self.assertEqual(bst.min(), None)
+
+        node_val1 = 6
+        bst.add(node_val1)
+        node_val2 = 4
+        bst.add(node_val2)
+        node_val3 = 10
+        bst.add(node_val3)
+        node_val4 = 16
+        bst.add(node_val4)
+
+        #    6
+        #   / \
+        #  4   10
+        #       \
+        #        16
+
+        ite = BinarySearchIterator(bst)
+        self.assertEquals(ite.tree, bst)
+        print ite.next()
+        print ite.next()
+        print ite.next()
+        print ite.next()
+
+
 
 if __name__ == '__main__':
     unittest.main()
