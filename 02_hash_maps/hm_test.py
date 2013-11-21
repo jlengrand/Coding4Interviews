@@ -11,6 +11,14 @@ import unittest
 
 class test_hash_map(unittest.TestCase):
 
+	def test_hash_size(self):
+		hm = HashMap()
+		self.assertEqual(hm._hash_size, 513)
+		
+		hm = HashMap(1025)
+		self.assertEqual(hm._hash_size, 1025)
+		
+
 	def test_size(self):
 		hm = HashMap()
 		self.assertEqual(hm.size(), 0)
