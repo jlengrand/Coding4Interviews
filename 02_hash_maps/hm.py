@@ -13,27 +13,27 @@ class HashMap():
 		self._size = 0
 		self.hmap = [None] * self._hash_size
 		
-	def add(self, value):
+	def add(self, key, value):
 		"""
 		Adds the provided value to the hashmap.
 		Raises an Exception if a collision is detected
 		"""
-		key = self._hash(value)
-		if self.hmap[key] == None:
-			self.hmap[key] = value
+		my_key = self._hash(key)
+		if self.hmap[my_key] == None:
+			self.hmap[my_key] = value
 			self._size += 1
 		else: 
 			raise Exception("Collision detected at index %d", key)
 	
 		# TODO: Keep implementing
 	
-	def get(self, value):
+	def get(self, key):
 		"""
 		Finds the element in the hash table that may contain the id for 
 		the string we are looking for
 		"""
-		key = self._hash(value)
-		return self.hmap[key]		
+		my_key = self._hash(key)
+		return self.hmap[my_key]		
 	
 	def size(self):
 		return self._size

@@ -38,11 +38,11 @@ class test_hash_map(unittest.TestCase):
 	def test_add(self):
 		hm = HashMap()
 		
-		hm.add("a")
+		hm.add("a", "Ibiza")
 		self.assertEqual(hm.size(), 1)
 
 		# Tests Collision
-		self.assertRaises(Exception, lambda x : hm.add(a))
+		self.assertRaises(Exception, lambda x : hm.add("a", "Ibiza"))
 		self.assertEqual(hm.size(), 1)
 
 	def test_get(self):
@@ -51,16 +51,17 @@ class test_hash_map(unittest.TestCase):
 		value = ""
 		self.assertRaises(Exception, lambda x : hm.get(value))
 		
-		value = "One"
-		hm.add(value)
+		key = "One"
+		value = "Ibiza"
+		hm.add(key, value)
 		
-		hm.add("Two")
-		hm.add("Three")
-		hm.add("Four")
+		hm.add("Two", "NY")
+		hm.add("Three", "Berlin")
+		hm.add("Four", "Chicago")
 		
 		self.assertEqual(hm.size(), 4)
 
-		self.assertEqual(hm.get(value), value)
-
+		self.assertEqual(hm.get(key), value)
+		
 if __name__ == "__main__":
 	unittest.main()
