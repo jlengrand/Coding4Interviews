@@ -51,6 +51,16 @@ class test_hash_map(unittest.TestCase):
 		value = ""
 		self.assertRaises(Exception, lambda x : hm.get(value))
 		
+		value = "One"
+		hm.add(value)
+		
+		hm.add("Two")
+		hm.add("Three")
+		hm.add("Four")
+		
+		self.assertEqual(hm.size(), 4)
+
+		self.assertEqual(hm.get(value), value)
 
 if __name__ == "__main__":
 	unittest.main()

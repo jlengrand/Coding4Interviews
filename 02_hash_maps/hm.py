@@ -27,12 +27,10 @@ class HashMap():
 	def get(self, value):
 		"""
 		Finds the element in the hash table that may contain the id for 
-		the string ze are looking for
+		the string we are looking for
 		"""
 		key = self._hash(value)
 		return self.hmap[key]		
-		
-	
 	
 	def size(self):
 		return self._size
@@ -41,12 +39,13 @@ class HashMap():
 		"""
 		Generates a hash for the given value.
 		The input is expected to be a String, with only ASCII characters.
+		
+		# hash function taken from HT3.
+		# We shift and add : << 4 is a *16
 		"""
 		if len(value) < 1:
 			raise Exception("Size of value must be greater than one")
 		
-		# hash function taken from HT3.
-		# We shift and add : << 4 is a *16
 		h = 0
 		for letter in value:
 			h = (h << 4) + ord(letter)
