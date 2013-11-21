@@ -45,6 +45,12 @@ class test_hash_map(unittest.TestCase):
 		self.assertRaises(Exception, lambda x : hm.add(a))
 		self.assertEqual(hm.size(), 1)
 
+	def test_get(self):
+		
+		hm = HashMap()
+		value = ""
+		self.assertRaises(Exception, lambda x : hm.get(value))
+		
 
 if __name__ == "__main__":
 	unittest.main()

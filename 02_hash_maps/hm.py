@@ -8,7 +8,7 @@ class HashMap():
 	def __init__(self, hash_size=513):
 		self._hash_size = hash_size
 		self._size = 0
-		self.hmap = [0] * self._hash_size
+		self.hmap = [None] * self._hash_size
 		
 	def add(self, value):
 		"""
@@ -16,13 +16,23 @@ class HashMap():
 		Raises an Exception if a collision is detected
 		"""
 		key = self._hash(value)
-		if self.hmap[key] == 0:
+		if self.hmap[key] == None:
 			self.hmap[key] = value
 			self._size += 1
 		else: 
 			raise Exception("Collision detected at index %d", key)
 	
 		# TODO: Keep implementing
+	
+	def get(self, value):
+		"""
+		Finds the element in the hash table that may contain the id for 
+		the string ze are looking for
+		"""
+		key = self._hash(value)
+		return self.hmap[key]		
+		
+	
 	
 	def size(self):
 		return self._size
