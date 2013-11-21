@@ -8,14 +8,19 @@ class HashMap():
 	def __init__(self, hash_size=513):
 		self._hash_size = hash_size
 		self._size = 0
-		self.hmap = [] * self._hash_size
+		self.hmap = [0] * self._hash_size
 		
 	def add(self, value):
 		"""
-		Adds the provided value to the hashmap
+		Adds the provided value to the hashmap.
+		Raises an Exception if a collision is detected
 		"""
 		key = self._hash(value)
-		self.hmap[key] = value
+		if self.hmap[key] == 0:
+			self.hmap[key] = value
+			self._size += 1
+		else: 
+			raise Exception("Collision detected at index %d", key)
 	
 		# TODO: Keep implementing
 	
