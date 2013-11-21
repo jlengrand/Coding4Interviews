@@ -1,8 +1,25 @@
 """
 HashMap Table Implementation
+
+Collisions are not handled in this version.
+
 @jlengrand
 2013/11
 """
+
+import abc
+
+class HashMapItem():
+	"""
+	The type of Object that is ingested by HashMap
+	It can be as simple as a String, but must have a get_value() method.
+	The get_value method will be used to calculate the hash key
+	"""
+	__metaclass__ = abc.ABCMeta
+	
+	@abc.abstractmethod	
+	def get_value(self):
+		return NotImplementedError("Method has to be implemented by sub classes")
 
 class HashMap():
 	def __init__(self, hash_size=513):
