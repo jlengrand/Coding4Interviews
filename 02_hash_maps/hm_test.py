@@ -41,5 +41,10 @@ class test_hash_map(unittest.TestCase):
 		hm.add("a")
 		self.assertEqual(hm.size(), 1)
 
+		# Tests Collision
+		self.assertRaises(Exception, lambda x : hm.add(a))
+		self.assertEqual(hm.size(), 1)
+
+
 if __name__ == "__main__":
 	unittest.main()
