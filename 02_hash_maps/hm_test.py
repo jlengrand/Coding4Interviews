@@ -17,8 +17,12 @@ class test_hash_map(unittest.TestCase):
 
 	def test__hash(self):
 		hm = HashMap()
+		
+		value = "a"
+		self.assertEqual(hm._hash(value), ord(value))
+		
 		value = "test"
-		self.assertEqual(hm._hash("test"), 1)
+		self.assertEqual(hm._hash(value), 502948)
 
 		value = ""
 		self.assertRaises(Exception, lambda x : hm._hash(value))
