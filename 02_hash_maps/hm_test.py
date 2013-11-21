@@ -30,7 +30,7 @@ class test_hash_map(unittest.TestCase):
 		self.assertEqual(hm._hash(value), ord(value))
 		
 		value = "test"
-		self.assertEqual(hm._hash(value), 502948)
+		self.assertEqual(hm._hash(value), 208)
 
 		value = ""
 		self.assertRaises(Exception, lambda x : hm._hash(value))

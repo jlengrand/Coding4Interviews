@@ -8,7 +8,17 @@ class HashMap():
 	def __init__(self, hash_size=513):
 		self._hash_size = hash_size
 		self._size = 0
+		self.hmap = [] * self._hash_size
 		
+	def add(self, value):
+		"""
+		Adds the provided value to the hashmap
+		"""
+		key = self._hash(value)
+		self.hmap[key] = value
+	
+		# TODO: Keep implementing
+	
 	def size(self):
 		return self._size
 	
@@ -26,6 +36,6 @@ class HashMap():
 		for letter in value:
 			h = (h << 4) + ord(letter)
 			
-		return h
+		return h % self._hash_size
 
 	
