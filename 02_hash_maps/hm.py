@@ -5,5 +5,9 @@ HashMap Table Implementation
 """
 
 class HashMap():
-	def __init__():
-		self.size = 0
+	def __init__(self):
+		self._size = 0
+		
+	def size(self):
+		return self._size
+	
