@@ -55,4 +55,24 @@ class HashMap():
 			
 		return h % self._hash_size
 
-	
+class HMTableCollision(HashMap):
+	"""
+	Extension of the previous HashMap implementation that takes care of
+	collisions.
+	Instead of having only one slot available per index in the table, 
+	each index will contain a list. This means several elements can be 
+	stored with the same index.
+	"""
+	def add(self, key, value):
+			"""
+			Adds the provided value to the hashmap.
+			Raises an Exception if a collision is detected
+			"""
+			my_key = self._hash(key)
+			
+			
+			if self.hmap[my_key] == None:
+				self.hmap[my_key] = value
+				self._size += 1
+			else: 
+				raise Exception("Collision detected at index %d", key)

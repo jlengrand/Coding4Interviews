@@ -5,9 +5,21 @@ Unit tests for the Hash Map table implementation
 """
 
 from hm import HashMap
+from hm import HMTableCollision
 
 import unittest
 
+class test_hash_map_table_collision(unittest.TestCase):
+	
+	def test_add(self):
+		hm = HMTableCollision()
+		
+		hm.add("a", "Ibiza")
+		self.assertEqual(hm.size(), 1)
+
+		# Tests Collision
+		self.assertRaises(Exception, lambda x : hm.add("a", "Ibiza"))
+		self.assertEqual(hm.size(), 1)
 
 class test_hash_map(unittest.TestCase):
 
