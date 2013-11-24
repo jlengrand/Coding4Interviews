@@ -9,6 +9,11 @@ from hm import HMTableCollision
 
 import unittest
 
+class test_hash_map_neighbour_collision(unittest.TestCase):
+
+	def test_add(self):
+		pass
+
 class test_hash_map_table_collision(unittest.TestCase):
 
 	def test_add(self):
