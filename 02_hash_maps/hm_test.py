@@ -10,16 +10,15 @@ from hm import HMTableCollision
 import unittest
 
 class test_hash_map_table_collision(unittest.TestCase):
-	
+
 	def test_add(self):
 		hm = HMTableCollision()
 		
 		hm.add("a", "Ibiza")
 		self.assertEqual(hm.size(), 1)
-
-		# Tests Collision
-		self.assertRaises(Exception, lambda x : hm.add("a", "Ibiza"))
-		self.assertEqual(hm.size(), 1)
+		
+		hm.add("a", "Ibiza")
+		self.assertEqual(hm.size(), 2)	
 
 class test_hash_map(unittest.TestCase):
 
@@ -46,6 +45,7 @@ class test_hash_map(unittest.TestCase):
 
 		value = ""
 		self.assertRaises(Exception, lambda x : hm._hash(value))
+
 
 	def test_add(self):
 		hm = HashMap()
