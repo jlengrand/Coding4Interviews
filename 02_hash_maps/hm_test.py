@@ -6,13 +6,20 @@ Unit tests for the Hash Map table implementation
 
 from hm import HashMap
 from hm import HMTableCollision
+from hm import HMNeighbourCollision
 
 import unittest
 
 class test_hash_map_neighbour_collision(unittest.TestCase):
 
 	def test_add(self):
-		pass
+		hm = HMNeighbourCollision()
+		
+		hm.add("One", "Ibiza")
+		self.assertEqual(hm.size(), 1)
+		
+		hm.add("One", "Ibiza2")
+		self.assertEqual(hm.size(), 2)	
 
 class test_hash_map_table_collision(unittest.TestCase):
 

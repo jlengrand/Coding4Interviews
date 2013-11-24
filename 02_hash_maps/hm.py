@@ -114,7 +114,7 @@ class HMTableCollision(HashMap):
 			
 		return h % self._hash_size
 
-class HashMapNeighbourCollision():
+class HMNeighbourCollision():
 	def __init__(self, hash_size=513):
 		self._hash_size = hash_size
 		self._size = 0
@@ -126,20 +126,39 @@ class HashMapNeighbourCollision():
 		Raises an Exception if a collision is detected
 		"""
 		my_key = self._hash(key)
-		if self.hmap[my_key] == None:
-			self.hmap[my_key] = value
-			self._size += 1
-		else: 
-			raise Exception("Collision detected at index %d", key)
+		idx = self._find_free_idx(my_key)
+		
+		self.hmap[idx] = value
+		self._size += 1
+
+	def _find_free_idx(self, key):
+		"""
+		Given an index in the current hash table, finds the nearest
+		element with a free value
+		"""
+		idx = key
+		cur_ptr = 1
+		negative = True
+		
+		while(True):
+			if self.hmap[idx] == None:
+				return idx
+			else:
+				if negative:
+					idx = key - cur_ptr
+					negative = False
+				else:
+					idx = key + cur_ptr
+					negative = True
+					cur_ptr += 1
 		
 	def get(self, key):
 		"""
 		Finds the element in the hash table that may contain the id for 
 		the string we are looking for
 		"""
-		my_key = self._hash(key)
-		return self.hmap[my_key]		
-	
+		#TODO
+			
 	def size(self):
 		return self._size
 	
