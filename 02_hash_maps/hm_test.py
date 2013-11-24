@@ -17,8 +17,35 @@ class test_hash_map_table_collision(unittest.TestCase):
 		hm.add("a", "Ibiza")
 		self.assertEqual(hm.size(), 1)
 		
-		hm.add("a", "Ibiza")
+		hm.add("a", "Ibiza2")
 		self.assertEqual(hm.size(), 2)	
+
+	def test_get(self):
+		
+		hm = HMTableCollision()
+		value = ""
+		self.assertRaises(Exception, lambda x : hm.get(value))
+		
+		key = "One"
+		value = "Ibiza"
+		hm.add(key, value)
+
+		key2 = "Two"
+		value2 = "NY"		
+		hm.add(key2, value2)
+		hm.add("Three", "Berlin")
+		hm.add("Four", "Chicago")
+		
+		value3 = "Ibiza2"
+		hm.add(key, value3)
+
+
+		self.assertEqual(hm.size(), 5)
+
+		self.assertEqual(hm.get(key2), value2)
+		self.assertEqual(hm.get("Five"), None)
+		self.assertEqual(hm.get(key), [value, value3])
+
 
 class test_hash_map(unittest.TestCase):
 
@@ -74,6 +101,7 @@ class test_hash_map(unittest.TestCase):
 		self.assertEqual(hm.size(), 4)
 
 		self.assertEqual(hm.get(key), value)
+		self.assertEqual(hm.get("Five"), None)
 		
 if __name__ == "__main__":
 	unittest.main()

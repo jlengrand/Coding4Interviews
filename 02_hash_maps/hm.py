@@ -85,7 +85,14 @@ class HMTableCollision(HashMap):
 		the string we are looking for
 		"""
 		my_key = self._hash(key)
-		return self.hmap[my_key]		
+		vals = self.hmap[my_key]
+		
+		if vals is None:
+			return vals
+		elif len(vals) == 1:
+			return vals[0] 
+		else:
+			return vals # we return all the results if there are several
 	
 	def size(self):
 		return self._size
