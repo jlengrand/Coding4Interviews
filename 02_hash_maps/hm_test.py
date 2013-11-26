@@ -51,7 +51,9 @@ class test_hash_map_table_collision(unittest.TestCase):
 		hm.add("a", "Ibiza")
 		self.assertEqual(hm.size(), 1)
 
-		hm.add("a", "Ibiza2")
+		self.assertRaises(Exception, lambda x : hm.add("a", "Ibiza"))
+
+		hm.add("a2", "Ibiza2")
 		self.assertEqual(hm.size(), 2)
 		# TODO: Should return exception. Not allow twice the same key!
 	def test_get(self):
@@ -70,11 +72,7 @@ class test_hash_map_table_collision(unittest.TestCase):
 		hm.add("Three", "Berlin")
 		hm.add("Four", "Chicago")
 
-		value3 = "Ibiza2"
-		hm.add(key, value3)
-
-
-		self.assertEqual(hm.size(), 5)
+		self.assertEqual(hm.size(), 4)
 
 		self.assertEqual(hm.get(key2), value2)
 		self.assertEqual(hm.get("Five"), None)

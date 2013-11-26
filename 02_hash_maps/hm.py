@@ -149,6 +149,9 @@ class HMTableCollision(HashMap):
 		if self.hmap[my_key] == None:
 			self.hmap[my_key] = [item]
 		else:
+			# we check if same key already exists
+			if [key in item.k for item in self.hmap[my_key]]:
+				raise Exception("This key already exists!")
 			self.hmap[my_key].append(item)
 		self._size += 1
 
