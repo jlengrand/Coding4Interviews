@@ -145,9 +145,12 @@ class HashMapWithItem():
 		Adds the provided value to the hashmap.
 		Raises an Exception if a collision is detected
 		"""
+		# item to be saved in the HM
+		item = _HashMapItem(key, value)
+
 		my_key = self._hash(key)
 		if self.hmap[my_key] == None:
-			self.hmap[my_key] = value
+			self.hmap[my_key] = item
 			self._size += 1
 		else:
 			raise Exception("Collision detected at index %d", key)
@@ -158,7 +161,7 @@ class HashMapWithItem():
 		the string we are looking for
 		"""
 		my_key = self._hash(key)
-		return self.hmap[my_key]
+		return self.hmap[my_key].v # returns the value
 
 	def size(self):
 		return self._size

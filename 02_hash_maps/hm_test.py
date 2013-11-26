@@ -80,7 +80,6 @@ class test_hash_map_table_collision(unittest.TestCase):
 		self.assertEqual(hm.get("Five"), None)
 		self.assertEqual(hm.get(key), [value, value3])
 
-
 class test_hash_map_with_item(unittest.TestCase):
 
 	def test_hash_size(self):
