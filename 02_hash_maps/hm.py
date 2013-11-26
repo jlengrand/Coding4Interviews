@@ -124,6 +124,7 @@ class HashMapWithItem():
 
 class HMTableCollision(HashMap):
 	"""
+	This implementation USES HMItems
 	Extension of the previous HashMap implementation that takes care of
 	collisions.
 	Instead of having only one slot available per index in the table,
@@ -140,12 +141,15 @@ class HMTableCollision(HashMap):
 		Adds the provided value to the hashmap.
 		Raises an Exception if a collision is detected
 		"""
+		# item to be saved in the HM
+		item = _HashMapItem(key, value)
+
 		my_key = self._hash(key)
 
 		if self.hmap[my_key] == None:
-			self.hmap[my_key] = [value]
+			self.hmap[my_key] = [item]
 		else:
-			self.hmap[my_key].append(value)
+			self.hmap[my_key].append(item)
 		self._size += 1
 
 	def get(self, key):
@@ -154,14 +158,15 @@ class HMTableCollision(HashMap):
 		the string we are looking for
 		"""
 		my_key = self._hash(key)
-		vals = self.hmap[my_key]
+		items = self.hmap[my_key]
 
-		if vals is None:
-			return vals
-		elif len(vals) == 1:
-			return vals[0]
+		if items is None:
+			return items # Nothing found
+		elif len(items) == 1:
+			return items[0].v # Returns correct value
 		else:
-			return vals # we return all the results if there are several
+			# TODO: Change this. Only return the correct result
+			return items # we return all the results if there are several
 
 	def size(self):
 		return self._size
