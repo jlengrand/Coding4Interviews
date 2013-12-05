@@ -239,21 +239,32 @@ class HMNeighbourCollision():
 		the string we are looking for
 		"""
 		my_key = self._hash(key)
-		items = self.hmap[my_key]
 
-		if items is None:
-			return items # Nothing found
-		else:
-			# We think the key is here.
-			# Test all the possible indexes for the key
-			# Stop when we reach the limits of the hasmaps
-			# or we find a free index
-			idx = my_key
-			cur_ptr = 1
-			negative = True
-			while(idx > 0 and idx < self._hash_size):
-				pass
-				# TODO: IMplement
+		# We think the key is here.
+		# Test all the possible indexes for the key
+		# Stop when we reach the limits of the hasmaps
+		# or we find a free index
+		idx = my_key
+		cur_ptr = 1
+		negative = True
+		while(idx > 0 and idx < self._hash_size):
+			item = self.hmap[item]
+
+			if item == None:
+				return None
+			elif item.k == key:
+				# We found a match
+				return item.v
+			else:
+				if negative:
+					idx = key - cur_ptr
+					negative = False
+				else:
+					idx = key + cur_ptr
+					negative = True
+					cur_ptr += 1
+
+		return None # key not in the HM
 
 	def size(self):
 		return self._size
