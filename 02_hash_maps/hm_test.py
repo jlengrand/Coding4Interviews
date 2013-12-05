@@ -77,9 +77,7 @@ class test_hash_map_table_collision(unittest.TestCase):
 		self.assertEqual(hm.get(key2), value2)
 		self.assertEqual(hm.get("Five"), None)
 
-		# Two tests to be done :
-		# Exact same key already exists : We return an error
-		# Different keys, but collision anyway, we return the correct value
+		# TODO: Different keys, but collision anyway, we return the correct value
 		#self.assertEqual(hm.get(key), )
 
 class test_hash_map_with_item(unittest.TestCase):

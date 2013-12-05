@@ -168,8 +168,11 @@ class HMTableCollision(HashMap):
 		elif len(items) == 1:
 			return items[0].v # Returns correct value
 		else:
-			# TODO: Change this. Only return the correct result
-			return items # we return all the results if there are several
+			if [key in item.k for item in items]:
+				return item.v # result found
+			else:
+				return None # result not found
+			# TODO: Test this
 
 	def size(self):
 		return self._size
@@ -235,7 +238,22 @@ class HMNeighbourCollision():
 		Finds the element in the hash table that may contain the id for
 		the string we are looking for
 		"""
-		#TODO
+		my_key = self._hash(key)
+		items = self.hmap[my_key]
+
+		if items is None:
+			return items # Nothing found
+		else:
+			# We think the key is here.
+			# Test all the possible indexes for the key
+			# Stop when we reach the limits of the hasmaps
+			# or we find a free index
+			idx = my_key
+			cur_ptr = 1
+			negative = True
+			while(idx > 0 and idx < self._hash_size):
+				pass
+				# TODO: IMplement
 
 	def size(self):
 		return self._size
