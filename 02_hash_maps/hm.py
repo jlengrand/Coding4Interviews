@@ -240,7 +240,6 @@ class HMNeighbourCollision():
 		"""
 		my_key = self._hash(key)
 
-		# We think the key is here.
 		# Test all the possible indexes for the key
 		# Stop when we reach the limits of the hasmaps
 		# or we find a free index
