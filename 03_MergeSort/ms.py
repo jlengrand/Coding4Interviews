@@ -21,6 +21,9 @@ class TableSorter():
         Returns the table array sorted between
         indices idx_min and idx_max using the merge sort algorithm
         """
+        if len(table) < 1:
+            return None
+
         if idx_max == None:
             idx_max = len(table)
 
