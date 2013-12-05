@@ -1,7 +1,7 @@
 """
 HashMap Table Implementation
 
-Collisions are not handled in this version.
+Collisions are handled in the neighbour and Table versions.
 
 @jlengrand
 2013/11
