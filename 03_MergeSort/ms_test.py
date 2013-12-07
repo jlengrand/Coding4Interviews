@@ -43,6 +43,9 @@ class test_table_sorter(unittest.TestCase):
         table = [1, 2]
         self.assertEqual(table, sorter.mergeSort(table))
 
+        table = [13, 54, 2, 785, 32, 12]
+        sorted_table = [2, 12, 13, 32, 54, 785]
+        self.assertEqual(sorted_table, sorter.mergeSort(table))
 
 if __name__ == "__main__":
     unittest.main()
