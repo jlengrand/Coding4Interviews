@@ -5,6 +5,7 @@ Unit Tests for the Linked Lists implementations
 """
 
 from ll import SingleListItem
+from ll import SingleLinkedList
 
 import unittest
 
@@ -22,9 +23,44 @@ class test_single_linked_list_item(unittest.TestCase):
         t = SingleListItem(12)
 
         self.assertEqual(False, t.has_next())
-        
+
         b = SingleListItem(13, t)
         self.assertEqual(True, b.has_next())
+
+
+class test_single_linked_list(unittest.TestCase):
+
+    def test_add(self):
+        a = 12
+        sl = SingleLinkedList()
+
+        sl.add(a)
+        self.assertEqual(1, len(sl))
+
+        sl.add(a)
+        self.assertEqual(2, len(sl))
+
+    def test_delete_item(self):
+        sl = SingleLinkedList()
+
+        sl.add(1)
+        sl.add(2)
+        sl.add(3)
+        self.assertEqual(3, len(sl))
+
+        self.assertEqual(1, sl._root.value)
+
+        self.assertRaises(Exception, lambda x : sl.delete_item(4))
+
+        sl.delete_item()
+        self.assertEqual(2, len(sl))
+        self.assertEqual(2, sl._root.value)
+
+
+        sl.add(4)
+        sl.add(5)
+        sl.add(6)
+        print sl
 
 if __name__ == "__main__":
     unittest.main()
