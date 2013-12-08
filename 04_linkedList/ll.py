@@ -47,12 +47,12 @@ class SingleLinkedList():
 
 		self._size += 1
 
-	def delete_item(self, node=None):
+	def delete_item(self, node=0):
 		"""
 		Deletes the nth node of the list. (0 being the first element)
 		If node is None, deletes the first element of the list.
 		"""
-		if node == None:
+		if node == 0:
 			item = self._root.nexti
 			self._root = item
 			self._size -= 1
@@ -74,6 +74,22 @@ class SingleLinkedList():
 
 			self._size -= 1
 
+	def delete(self, value):
+		"""
+		Deletes the first node in the list that contains value
+		"""
+		ptr=0
+		item = self._root
+		while(item != None):
+			if item.value == value:
+				self.delete_item(ptr)
+				return
+
+			item = item.nexti
+			ptr += 1
+
+		print "Going there!"
+		raise Exception("Value not found in the list")
 
 	def __len__(self):
 		# Returns the number of elements in the list
@@ -85,6 +101,9 @@ class SingleLinkedList():
 		This way of doing is not exactly clever, given the fact that I put
 		everything in memory before printing
 		"""
+		if self._root == None:
+			return "Empty List"
+
 		to_print = ""
 		curr = self._root
 		to_print += str(curr.value)
@@ -101,3 +120,5 @@ if __name__ == "__main__":
 	ll.add(5)
 	ll.add(6)
 	print ll
+
+	ll.delete(14)

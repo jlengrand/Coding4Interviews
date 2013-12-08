@@ -69,5 +69,27 @@ class test_single_linked_list(unittest.TestCase):
         sl.delete_item()
         self.assertEqual("4, 5", sl.__str__())
 
+    def test_delete(self):
+        sl = SingleLinkedList()
+
+        sl.add(2)
+        sl.add(1)
+        sl.add(3)
+        self.assertEqual(3, len(sl))
+
+        self.assertEqual(2, sl._root.value)
+
+        self.assertRaises(Exception, lambda x: sl.delete(4))
+
+        sl.delete(1)
+        self.assertEqual("2, 3", sl.__str__())
+
+        sl.delete(2)
+        self.assertEqual("3", sl.__str__())
+
+        sl.delete(3)
+        self.assertEqual("Empty List", sl.__str__())
+        self.assertEqual(0, len(sl))
+
 if __name__ == "__main__":
     unittest.main()
