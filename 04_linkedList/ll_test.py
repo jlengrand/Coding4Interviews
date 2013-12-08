@@ -56,11 +56,18 @@ class test_single_linked_list(unittest.TestCase):
         self.assertEqual(2, len(sl))
         self.assertEqual(2, sl._root.value)
 
-
         sl.add(4)
         sl.add(5)
         sl.add(6)
-        print sl
+
+        sl.delete_item(len(sl) - 1)
+        self.assertEqual("2, 3, 4, 5", sl.__str__())
+
+        sl.delete_item(1)
+        self.assertEqual("2, 4, 5", sl.__str__())
+
+        sl.delete_item()
+        self.assertEqual("4, 5", sl.__str__())
 
 if __name__ == "__main__":
     unittest.main()

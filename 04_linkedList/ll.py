@@ -56,10 +56,23 @@ class SingleLinkedList():
 			item = self._root.nexti
 			self._root = item
 			self._size -= 1
-		elif node >= self.size():
+		elif node >= self._size:
 			raise Exception("Requested value out of list bounds")
+		else:
+			# Find the element before
+			# Find the element after
+			# Link the element after to the element before
+			# Reduce the size
+			# I want to traverse the list only once
+			item = self._root
+			for i in range(node - 1):
+				item = item.nexti
 
+			item_bef = item
+			item_af = item.nexti.nexti
+			item_bef.nexti = item_af
 
+			self._size -= 1
 
 
 	def __len__(self):
