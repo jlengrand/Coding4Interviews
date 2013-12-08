@@ -104,6 +104,20 @@ class SingleLinkedList():
 
 		return False
 
+	def get(self, idx):
+		"""
+		Returns the element of the list located at idx
+		"""
+		item = self._root
+		if idx == 0:
+			return item.value
+		elif idx >= self._size:
+			raise Exception("Index is greater than the size of the list!")
+
+		for i in range(idx):
+			item = item.nexti
+		return item.value
+
 	def __len__(self):
 		# Returns the number of elements in the list
 		return self._size

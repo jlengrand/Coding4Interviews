@@ -108,6 +108,27 @@ class test_single_linked_list(unittest.TestCase):
         self.assertEqual(False, sl.search(4))
         self.assertEqual(False, sl.search(12))
 
+    def test_get(self):
+
+        sl = SingleLinkedList()
+
+        sl.add(2)
+        sl.add(1)
+        sl.add(3)
+        sl.add(4)
+        sl.add(5)
+        sl.add(6)
+
+        self.assertEqual(6, len(sl))
+
+        self.assertEqual(2, sl.get(0))
+        self.assertEqual(1, sl.get(1))
+        self.assertEqual(3, sl.get(2))
+        self.assertEqual(4, sl.get(3))
+        self.assertEqual(5, sl.get(4))
+        self.assertEqual(6, sl.get(5))
+
+        self.assertRaises(Exception, lambda x: sl.get(14))
 
 if __name__ == "__main__":
     unittest.main()
