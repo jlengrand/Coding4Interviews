@@ -130,5 +130,41 @@ class test_single_linked_list(unittest.TestCase):
 
         self.assertRaises(Exception, lambda x: sl.get(14))
 
+    def test_remove_duplicates(self):
+
+        sl = SingleLinkedList()
+
+        sl.add(2)
+        sl.add(1)
+        sl.add(3)
+        sl.add(2)
+        sl.add(3)
+        sl.add(1)
+        sl.add(2)
+
+        self.assertEqual(7, len(sl))
+
+        sl.remove_duplicates()
+        self.assertEqual(3, len(sl))
+        self.assertEqual("2, 1, 3", sl.__str__())
+
+    def test_remove_duplicates_light(self):
+
+        sl = SingleLinkedList()
+
+        sl.add(2)
+        sl.add(1)
+        sl.add(3)
+        sl.add(2)
+        sl.add(3)
+        sl.add(1)
+        sl.add(2)
+
+        self.assertEqual(7, len(sl))
+
+        sl.remove_duplicates()
+        self.assertEqual(3, len(sl))
+        self.assertEqual("2, 1, 3", sl.__str__())
+
 if __name__ == "__main__":
     unittest.main()

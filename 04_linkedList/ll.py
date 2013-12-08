@@ -118,6 +118,37 @@ class SingleLinkedList():
 			item = item.nexti
 		return item.value
 
+	def remove_duplicates(self):
+		"""
+		Removes all duplicate values from the list
+		"""
+		# get an array of elements
+		# look at items
+		# if item value is in array, remove item
+		# otherwise, add value to array
+
+		values = []
+		item = self._root
+		ptr = 0
+		while(item is not None):
+			val = item.value
+			if val in values:
+				self.delete_item(ptr)
+				ptr -= 1
+			else:
+				values.append(val)
+
+			item = item.nexti
+			ptr += 1
+
+	def remove_duplicates_light(self):
+		"""
+		Removes all duplicate values from the list
+		NOTE: This version does not store any extra data, but will take some extra
+		time to complete
+		"""
+		pass
+
 	def __len__(self):
 		# Returns the number of elements in the list
 		return self._size
