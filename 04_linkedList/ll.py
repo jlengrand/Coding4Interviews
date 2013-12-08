@@ -91,6 +91,19 @@ class SingleLinkedList():
 		print "Going there!"
 		raise Exception("Value not found in the list")
 
+	def search(self, value):
+		"""
+		Returns True if the value is in the List.
+		"""
+		item = self._root
+		while(item != None):
+			if item.value == value:
+				return True
+
+			item = item.nexti
+
+		return False
+
 	def __len__(self):
 		# Returns the number of elements in the list
 		return self._size

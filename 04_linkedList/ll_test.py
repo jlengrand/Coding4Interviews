@@ -91,5 +91,23 @@ class test_single_linked_list(unittest.TestCase):
         self.assertEqual("Empty List", sl.__str__())
         self.assertEqual(0, len(sl))
 
+    def test_search(self):
+
+        sl = SingleLinkedList()
+
+        sl.add(2)
+        sl.add(1)
+        sl.add(3)
+        self.assertEqual(3, len(sl))
+
+        self.assertEqual(True, sl.search(2))
+        self.assertEqual(True, sl.search(3))
+        self.assertEqual(True, sl.search(1))
+
+        self.assertEqual(False, sl.search("a"))
+        self.assertEqual(False, sl.search(4))
+        self.assertEqual(False, sl.search(12))
+
+
 if __name__ == "__main__":
     unittest.main()
