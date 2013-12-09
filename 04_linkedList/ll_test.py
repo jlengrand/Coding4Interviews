@@ -148,6 +148,24 @@ class test_single_linked_list(unittest.TestCase):
         self.assertEqual(3, len(sl))
         self.assertEqual("2, 1, 3", sl.__str__())
 
+    def test_remove_duplicate_light(self):
+
+        sl = SingleLinkedList()
+
+        sl.add(2)
+        sl.add(1)
+        sl.add(3)
+        sl.add(2)
+        sl.add(3)
+        sl.add(1)
+        sl.add(2)
+
+        self.assertEqual(7, len(sl))
+
+        sl._remove_duplicate_light(sl._root)
+        self.assertEqual(5, len(sl))
+        self.assertEqual("2, 1, 3, 3, 1", sl.__str__())
+
     def test_remove_duplicates_light(self):
 
         sl = SingleLinkedList()
@@ -162,7 +180,7 @@ class test_single_linked_list(unittest.TestCase):
 
         self.assertEqual(7, len(sl))
 
-        sl.remove_duplicates()
+        sl.remove_duplicates_light()
         self.assertEqual(3, len(sl))
         self.assertEqual("2, 1, 3", sl.__str__())
 

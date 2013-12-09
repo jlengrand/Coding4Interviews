@@ -147,7 +147,31 @@ class SingleLinkedList():
 		NOTE: This version does not store any extra data, but will take some extra
 		time to complete
 		"""
-		pass
+		# take root.
+		# look each element
+		# remove if same value
+		item = self._root
+		while(item.nexti != None):
+			next_item = item.nexti
+			self._remove_duplicate_light(item)
+			item = next_item
+
+	def _remove_duplicate_light(self, element):
+		"""
+		Given an element in the list, removes all further duplicates of that
+		element in the remainder or the list.
+		"""
+		# edge case
+		if element is None:
+			return None
+
+		val = element.value
+		while(element.nexti != None):
+			if(element.nexti.value == val): # duplicate
+				element.nexti = element.nexti.nexti
+				self._size -= 1
+			else: # not duplicate
+				element = element.nexti
 
 	def __len__(self):
 		# Returns the number of elements in the list
