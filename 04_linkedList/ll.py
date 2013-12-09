@@ -173,6 +173,25 @@ class SingleLinkedList():
 			else: # not duplicate
 				element = element.nexti
 
+	def detect_loop(self):
+		"""
+		Returns True if a loop is found in a Linked List
+		"""
+		max_ite = self._size + 1
+		# We basically keep going forward.
+		# If we iterate for more than the size of the list without reaching the end,
+		#  we assume there is a loop somewhere.
+		item = self._root
+		ptr = 0
+		while(ptr < max_ite):
+			if item is None :
+				return False
+			else:
+				item = item.nexti
+				ptr += 1
+		return True
+
+
 	def __len__(self):
 		# Returns the number of elements in the list
 		return self._size

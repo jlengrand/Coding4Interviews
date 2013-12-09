@@ -20,7 +20,7 @@ class test_single_linked_list_item(unittest.TestCase):
 
 	def test_has_next(self):
 		a = 12
-        t = SingleListItem(12)
+        t = SingleListItem(a)
 
         self.assertEqual(False, t.has_next())
 
@@ -183,6 +183,24 @@ class test_single_linked_list(unittest.TestCase):
         sl.remove_duplicates_light()
         self.assertEqual(3, len(sl))
         self.assertEqual("2, 1, 3", sl.__str__())
+
+    def test_detect_loop(self):
+
+        sl = SingleLinkedList()
+
+        sl.add(2)
+        sl.add(1)
+        sl.add(3)
+        sl.add(2)
+        sl.add(3)
+        sl.add(1)
+        sl.add(2)
+
+        self.assertEqual(7, len(sl))
+        self.assertEqual(False, sl.detect_loop())
+
+        sl._root.nexti.nexti.nexti.nexti = sl._root
+        self.assertEqual(True, sl.detect_loop())
 
 if __name__ == "__main__":
     unittest.main()
